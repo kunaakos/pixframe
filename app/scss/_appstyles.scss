@@ -1,0 +1,41 @@
+/* all app scss styles here */
+
+body {
+	background-color: #CAD8DB;
+}
+
+
+
+.matrix-container {
+	@include viewportRatio($cols, $rows);
+	margin: auto;
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    border: 1vw solid transparent;
+    background-color: #fafafa;
+	@include container-shadow;
+}
+
+.matrix-row {
+	width: 100%;
+	height: percentage(1/$rows);
+}
+
+.matrix-cell {
+	float: left;
+	display: block;
+	width: percentage(1/$cols);
+	height: 100%;
+	cursor: pointer;
+	&:hover {
+		background-color: #FF9588;
+	}
+	@include transitions;
+}
+
+.on {
+	background-color: #FF6551;
+}

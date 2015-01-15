@@ -1,0 +1,22 @@
+$cols: 4;
+$rows: 5;
+
+@mixin transitions {
+	-webkit-transition: background-color 500ms ease-out;
+	-moz-transition: background-color 500ms ease-out;
+	-o-transition: background-color 500ms ease-out;
+	transition: background-color 500ms ease-out;
+}
+
+@mixin container-shadow {
+	-webkit-box-shadow: 2px 2px 11px 1px rgba(0,0,0,0.20);
+	-moz-box-shadow: 2px 2px 11px 1px rgba(0,0,0,0.20);
+	box-shadow: 2px 2px 11px 1px rgba(0,0,0,0.20);
+}
+
+@mixin viewportRatio($x, $y) {
+  width: 90vw;
+  height: $y * 90vw / $x;
+  max-width: $x / $y * 90vh;
+  max-height: 90vh;
+}

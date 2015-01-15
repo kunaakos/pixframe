@@ -1,0 +1,8 @@
+{
+  "name": "zf5_project",
+  "dependencies": {
+    "font-awesome": "~4.2.0",
+    "dweet.io": "*",
+    "jquery": "~2.1.3"
+  }
+}
