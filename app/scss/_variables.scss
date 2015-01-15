@@ -14,9 +14,9 @@ $rows: 5;
 	box-shadow: 2px 2px 11px 1px rgba(0,0,0,0.20);
 }
 
-@mixin viewportRatio($x, $y) {
-  width: 90vw;
-  height: $y * 90vw / $x;
-  max-width: $x / $y * 90vh;
-  max-height: 90vh;
+@mixin containerSize($cols, $rows, $prc) {
+  width: #{ $prc }vw;
+  height: #{ $rows * $prc / $cols }vw;
+  max-width: #{ $cols / $rows * $prc }vh;
+  max-height: #{ $prc }vh;
 }
