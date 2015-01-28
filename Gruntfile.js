@@ -94,20 +94,20 @@ module.exports = function(grunt) {
 				files: ['Gruntfile.js'],
 				tasks: ['sass'],
 				options: {
-			    	// spawn: false,
+			    	spawn: false,
 				},
 			},
 			sass: {
 				files: '<%= app %>/scss/**/*.scss',
 				tasks: ['sass'],
 				options: {
-      				// spawn: false,
+      				spawn: false,
     			},
 			},
 			livereload: {
 				files: ['<%= app %>/**/*.html', '!<%= app %>/bower_components/**', '<%= app %>/js/**/*.js', '<%= app %>/css/**/*.css', '<%= app %>/images/**/*.{jpg,gif,svg,jpeg,png}'],
 				options: {
-					// spawn: false,
+					spawn: false,
 					livereload: true
 				}
 			}

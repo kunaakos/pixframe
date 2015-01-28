@@ -5,11 +5,11 @@ $container-border-width: 2;
 
 $container-border-height-prc: 80;
 $container-border-width-prc: 98;
-$container-border-top: 99 - $container-border-height-prc - $container-border-width;
+$container-border-top: 100 - $container-border-height-prc - $container-border-width;
 
 $container-height-prc: $container-border-height-prc - 2 * $container-border-width;
 $container-width-prc: $container-border-width-prc - 3 * $container-border-width;
-$container-top: 99 - $container-height-prc - 2 * $container-border-width;
+$container-top: 100 - $container-height-prc - 2 * $container-border-width;
 
 $bgcolor: #CAD8DB;
 $bgcolor2: #FAFAFA;
