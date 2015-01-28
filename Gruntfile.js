@@ -92,15 +92,22 @@ module.exports = function(grunt) {
 		watch: {
 			grunt: {
 				files: ['Gruntfile.js'],
-				tasks: ['sass']
+				tasks: ['sass'],
+				options: {
+			    	// spawn: false,
+				},
 			},
 			sass: {
 				files: '<%= app %>/scss/**/*.scss',
-				tasks: ['sass']
+				tasks: ['sass'],
+				options: {
+      				// spawn: false,
+    			},
 			},
 			livereload: {
 				files: ['<%= app %>/**/*.html', '!<%= app %>/bower_components/**', '<%= app %>/js/**/*.js', '<%= app %>/css/**/*.css', '<%= app %>/images/**/*.{jpg,gif,svg,jpeg,png}'],
 				options: {
+					// spawn: false,
 					livereload: true
 				}
 			}
