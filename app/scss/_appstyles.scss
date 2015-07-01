@@ -39,24 +39,14 @@ body {
 	@include containerSize($cols, $rows, $container-width-prc, $container-height-prc);
 	margin: auto;
     position: absolute;
-    top: #{ $container-top }vh;
-    // top: 0;
-    // bottom: 0;
+    // top: #{ $container-top }vh;
+    top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
-}
-
-.matrix-container-border {
-	@include containerSize($cols, $rows, $container-border-width-prc, $container-border-height-prc);
-	margin: auto;
-    position: absolute;
-    top: #{ $container-border-top }vh;
-    // top: 0;
-    // bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: $bgcolor2;
 	@include container-shadow;
+    background-color: white;
+    border: 10px solid white;
 }
 
 .matrix-row {
@@ -79,8 +69,4 @@ body {
 		}
 	}
 	@include transitions;
-}
-
-.on {
-	background-color: $cellcolor;
 }

@@ -1,5 +1,5 @@
 {
-  "name": "zf5_project",
+  "name": "pixframe",
   "dependencies": {
     "font-awesome": "~4.2.0",
     "dweet.io": "*",
