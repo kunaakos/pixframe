@@ -9,7 +9,7 @@ var app = (function(document, $) {
         },
 
         _bindEvents = function() {
-            // fucky but works, need to read up on mouse events
+            // fucky but works, need to read up on mouse events, fix for touch, etc
             // disable dragging
             $('.matrix-cell').bind('dragstart', function(){
                 return false;
@@ -30,7 +30,6 @@ var app = (function(document, $) {
             _userAgentInit();
             _bindEvents();
         },
-
 
         _displayPattern = function() {
             var palette = pixels.returnPalette();
@@ -58,6 +57,6 @@ var app = (function(document, $) {
 })(document, jQuery);
 
 (function() {
-    pixels.init(app.displayPattern);
+    pixels.init(app.displayPattern, colorPicker.init);
     app.init();
 })();

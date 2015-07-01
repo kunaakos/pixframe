@@ -7,16 +7,17 @@ var pixels = (function(document, $) {
 
         source = new Firebase('https://pixframe.firebaseio.com/'),
         
-        _init = function(callback) {
-            // display initial pattern
+        _init = function(patternChangeCb, colorPickerInitCb) {
+            // display initial pattern, pass palette to color picker init
             _getData(function(){
-                callback();
+                if (patternChangeCb) patternChangeCb();
+                if (colorPickerInitCb) colorPickerInitCb(_palette);
             });
             
             // listens for pattern changes
             source.on('child_changed', function() {
                 console.log('pattern changed');
-                _getPattern(callback);
+                _getPattern(patternChangeCb);
             });    
         },
 

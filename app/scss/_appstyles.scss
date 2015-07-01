@@ -1,11 +1,13 @@
 /* all app scss styles here */
 
+body, html {
+	height: 100%;
+}
+
 body {
 	background-color: $bgcolor;
 	margin: 0;
 }
-
-
 
 .header {
 	position: relative;

@@ -1,0 +1,33 @@
+$cp-width: 50px;
+$cp-height: 150px;
+
+.colorpicker {
+    left: 0;
+    right: 0;
+    height: 100%;
+    position: relative;
+    background: rgba(255, 255, 255, 0.6);
+    .slice {
+        position: absolute;
+        top: 50%;
+        margin-top: -($cp-height);
+        left: 50%;
+        margin-left: -($cp-width);
+        width: $cp-width;
+        height: $cp-height;
+        border-style: solid;
+        border-width: $cp-height $cp-width 0 $cp-width;
+        transform-origin: bottom center;
+        box-sizing: border-box;
+        &:first-child{
+            width: 100px;
+            height: 100px;
+            margin-top: -50px;
+            margin-left: -50px;
+            border-radius: 100px;
+            border-width: 0 !important;
+            border-style: none !important;
+            z-index: 100;
+        }
+    }
+}
