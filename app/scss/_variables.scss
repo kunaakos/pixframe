@@ -1,12 +1,12 @@
 $cols: 8;
 $rows: 8;
 
-$container-border-width: 2;
-$container-border-bottom-width: 8;
-$button-font-size: 6;
+$container-border-width: 2.5;
+$container-border-bottom-width: 7;
+$button-font-size: 5;
 
-$container-border-height-prc: 80;
-$container-border-width-prc: 98;
+$container-border-height-prc: 85;
+$container-border-width-prc: 90;
 $container-border-top: 100 - $container-border-height-prc - $container-border-width;
 
 $container-height-prc: $container-border-height-prc - 2 * $container-border-width;
