@@ -19,6 +19,12 @@
 		}
 		margin: 0 3vh 3vh 3vh;
 	}
+	a {
+		color: white;
+		&:hover {
+			color: $bg-lite;
+		}
+	}
 
 	// MUST
 	// REMOVE
@@ -29,14 +35,14 @@
 		padding-top: 50vh;
 		&:hover {
 			padding-top: 0;
-			margin-top: -73.2vh;
+			margin-top: -73.5vh;
 			opacity: 1;
 		}
 		@media screen and (max-aspect-ratio: 1/1) {
 			margin-top: -25vw;
 			padding-top: 50vw;
 			&:hover {
-				margin-top: -73.2vw;
+				margin-top: -73.5vw;
 			}
 		}
 		@include transitionsAll(150ms, 0ms);
