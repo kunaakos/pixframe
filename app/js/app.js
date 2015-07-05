@@ -1,8 +1,8 @@
 'use strict';
 
-var app = (function(document, $) {
+var app = (function() {
     var docElem = document.documentElement,
-        myColor = 2,
+        myColor = 0,
         
         _userAgentInit = function() {
             docElem.setAttribute('data-useragent', navigator.userAgent);
@@ -24,6 +24,13 @@ var app = (function(document, $) {
             $('.matrix-cell').click(function(event) {
                    pixels.set($(this).parent().index(), $(this).index(), myColor);
             });
+
+            $('.colorpicker-toggle').click(function(){
+                $('body').toggleClass('show-colorpicker');
+            });
+            $('.info-toggle').click(function(){
+                alert('no help yet...');
+            });
         },
         
         _init = function() {
@@ -31,9 +38,7 @@ var app = (function(document, $) {
             _bindEvents();
         },
 
-        _displayPattern = function() {
-            var palette = pixels.returnPalette();
-            var pattern = pixels.returnPattern();
+        _displayPattern = function(pattern, palette) {
             $('.matrix-row').each(function(indexRow) {
                 $(this).children('.matrix-cell').each(function(indexColumn){
                     $(this).css('background-color', palette[pattern[indexRow][indexColumn]]);
@@ -43,9 +48,9 @@ var app = (function(document, $) {
         },
 
         _changeColor = function(newColor) {
-            if (newColor<16) {
-                myColor = newColor
-            };
+                myColor = newColor;
+                $('body').removeClass('show-colorpicker');
+
         }
 
     return {
@@ -54,9 +59,17 @@ var app = (function(document, $) {
         changeColor: _changeColor
     };
 
-})(document, jQuery);
+})();
 
 (function() {
-    pixels.init(app.displayPattern, colorPicker.init);
+
+    pixels.init(function(pattern, palette) {
+        colorPicker.init(palette);
+        app.displayPattern(pattern, palette)
+    });
+
     app.init();
+
+    colorPicker.setColorChangeCb(app.changeColor);
+    pixels.setPatternChangeCb(app.displayPattern);
 })();

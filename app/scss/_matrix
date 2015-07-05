@@ -1,0 +1,16 @@
+.matrix-row {
+	width: 100%;
+	height: percentage(1/$rows);
+}
+
+.matrix-cell {
+	float: left;
+	display: block;
+	width: percentage(1/$cols);
+	height: 100%;
+	cursor: pointer;
+	&:hover {
+		opacity: 0.8;
+	}
+	@include transitionsBgColor(500ms, 0ms);
+}

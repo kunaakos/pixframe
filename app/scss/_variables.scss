@@ -2,6 +2,8 @@ $cols: 8;
 $rows: 8;
 
 $container-border-width: 2;
+$container-border-bottom-width: 8;
+$button-font-size: 6;
 
 $container-border-height-prc: 80;
 $container-border-width-prc: 98;
@@ -11,21 +13,28 @@ $container-height-prc: $container-border-height-prc - 2 * $container-border-widt
 $container-width-prc: $container-border-width-prc - 3 * $container-border-width;
 $container-top: 100 - $container-height-prc - 2 * $container-border-width;
 
-$bgcolor: #CAD8DB;
-$bgcolor2: #FAFAFA;
-$cellcolor: #E27668;
+$bg-dark: #CAD8DB;
+$bg-lite: #E3EBED;
 
-@mixin transitions {
-	-webkit-transition: background-color 500ms ease-out;
-	-moz-transition: background-color 500ms ease-out;
-	-o-transition: background-color 500ms ease-out;
-	transition: background-color 500ms ease-out;
+@mixin transitionsBgColor($len, $del) {
+	-webkit-transition: background-color $len ease-out $del, opacity $len ease-out $del;
+	-moz-transition: background-color $len ease-out $del, opacity $len ease-out $del;
+	-o-transition: background-color $len ease-out $del, opacity $len ease-out $del;
+	transition: background-color $len ease-out $del, opacity $len ease-out $del;
 }
 
-@mixin container-shadow {
-	-webkit-box-shadow: 0px 2px 5px 2px rgba(0,0,0,0.20);
-	-moz-box-shadow: 0px 2px 5px 2px rgba(0,0,0,0.20);
-	box-shadow: 0px 2px 5px 2px rgba(0,0,0,0.20);
+@mixin transitionsTransform($len, $del) {
+	-webkit-transition: transform $len ease-out $del;
+	-moz-transition: transform $len ease-out $del;
+	-o-transition: transform $len ease-out $del;
+	transition: transform $len ease-out $del;
+}
+
+@mixin transitionsAll($len, $del) {
+	-webkit-transition: all $len ease-out $del;
+	-moz-transition: all $len ease-out $del;
+	-o-transition: all $len ease-out $del;
+	transition: all $len ease-out $del;
 }
 
 @mixin containerSize($cols, $rows, $prcw, $prch) {
@@ -38,4 +47,19 @@ $cellcolor: #E27668;
 @mixin containerWidthOnly($cols, $rows, $prcw, $prch) {
   width: #{ $prcw }vw;
   max-width: #{ $cols / $rows * $prch }vh;
+}
+
+// ported from http://medium.com/@Florian/freebie-google-material-design-shadow-helper-2a0501295a2d
+@mixin materialShadow($level){
+    @if $level ==  1 {
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    } @else if $level ==  2 {
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    } @else if $level ==  3 {
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    } @else if $level ==  4 {
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    } @else if $level ==  5 {
+        box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    }
 }

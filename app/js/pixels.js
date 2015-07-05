@@ -1,27 +1,30 @@
 'use strict';
 
-var pixels = (function(document, $) {
+var pixels = (function() {
     
     var _pattern = [],
         _palette = [],
+        _patternChangeCb = null,
 
         source = new Firebase('https://pixframe.firebaseio.com/'),
         
-        _init = function(patternChangeCb, colorPickerInitCb) {
-            // display initial pattern, pass palette to color picker init
-            _getData(function(){
-                if (patternChangeCb) patternChangeCb();
-                if (colorPickerInitCb) colorPickerInitCb(_palette);
+        _init = function(callback) {
+            _updateData(function(){
+                if (callback) callback(_pattern, _palette);
             });
             
             // listens for pattern changes
             source.on('child_changed', function() {
                 console.log('pattern changed');
-                _getPattern(patternChangeCb);
+                _getPattern(_patternChangeCb);
             });    
         },
 
-        _getData = function(callback) {
+        _setPatternChangeCb = function(callback) {
+            _patternChangeCb = callback;
+        },
+
+        _updateData = function(callback) {
             source.once('value', function(data) {
                 _pattern = data.val().pattern;
                 _palette = data.val().palette;
@@ -31,11 +34,11 @@ var pixels = (function(document, $) {
             });
         },
 
-        // updates _pattern values from firebase, passes them to callback if callback is specified
+        // updates _pattern and palette values from firebase, passes them to callback if callback is specified
         _getPattern = function(callback) {
-            _getData(function() {
+            _updateData(function() {
                 if (callback) {
-                    callback();
+                    callback(_pattern, _palette);
                 };
             })
         },
@@ -45,11 +48,19 @@ var pixels = (function(document, $) {
         },
 
         _returnPattern = function() {
-            return _pattern;
+            if (_pattern !== []) {
+                return _pattern;
+            } else {
+                return null;
+            };
         },
 
         _returnPalette = function() {
-            return _palette;
+            if (_palette !== []) {
+                return _palette;
+            } else {
+                return null;
+            };
         }
 
 
@@ -57,7 +68,9 @@ var pixels = (function(document, $) {
         init: _init,
         set: _setPixel,
         returnPalette: _returnPalette,
-        returnPattern: _returnPattern
+        returnPattern: _returnPattern,
+        getPattern: _getPattern,
+        setPatternChangeCb: _setPatternChangeCb
     };
 
-})(document);
+})();
