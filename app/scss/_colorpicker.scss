@@ -16,7 +16,13 @@ $cp-height: 150px;
         height: $cp-height;
         border-style: solid;
         border-width: $cp-height $cp-width 0 $cp-width;
+
+        -webkit-transform-origin: bottom center;
+        -ms-transform-origin: bottom center;
+        -webkit-transform-origin: bottom center;
+        -o-transform-origin: bottom center;
         transform-origin: bottom center;
+
         box-sizing: border-box;
         &:first-child{
             width: 100px;

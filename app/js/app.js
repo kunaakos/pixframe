@@ -24,11 +24,9 @@ var app = (function() {
             $('.matrix-cell').click(function(event) {
                    pixels.set($(this).parent().index(), $(this).index(), myColor);
             });
-
             $('.colorpicker-toggle').click(function(){
                 $('body').toggleClass('show-colorpicker');
                 $('body').removeClass('show-info');
-
             });
             $('.info-toggle').click(function(){
                 $('body').toggleClass('show-info');
@@ -36,6 +34,9 @@ var app = (function() {
             });
             $('.info-container').click(function(){
                 $('body').removeClass('show-info');
+            });
+            $('.video').click(function(e){
+                e.stopPropagation();
             });
         },
         
