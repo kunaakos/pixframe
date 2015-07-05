@@ -1,23 +1,23 @@
 'use strict';
 
 var pixels = (function() {
-    
-    var _pattern = [],
-        _palette = [],
+
+    var _pattern = null,
+        _palette = null,
         _patternChangeCb = null,
 
         source = new Firebase('https://pixframe.firebaseio.com/'),
-        
+
         _init = function(callback) {
             _updateData(function(){
                 if (callback) callback(_pattern, _palette);
             });
-            
+
             // listens for pattern changes
             source.on('child_changed', function() {
                 console.log('pattern changed');
                 _getPattern(_patternChangeCb);
-            });    
+            });
         },
 
         _setPatternChangeCb = function(callback) {
@@ -48,19 +48,11 @@ var pixels = (function() {
         },
 
         _returnPattern = function() {
-            if (_pattern !== []) {
                 return _pattern;
-            } else {
-                return null;
-            };
         },
 
         _returnPalette = function() {
-            if (_palette !== []) {
                 return _palette;
-            } else {
-                return null;
-            };
         }
 
 

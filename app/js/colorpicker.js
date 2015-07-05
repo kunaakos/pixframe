@@ -33,6 +33,7 @@ var colorPicker = (function() {
                 $('.colorpicker').append(
                     "<div class='slice' style='" +
                         "transform:rotate(" + degrees * (i - 1) + "deg);" +
+                        "-webkit-transform:rotate(" + degrees * (i - 1) + "deg);" +
                         "border-color:" + _palette[i] + " transparent transparent transparent" +
                     "'></div>"
                 );

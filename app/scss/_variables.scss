@@ -49,6 +49,14 @@ $bg-lite: #E3EBED;
   max-width: #{ $cols / $rows * $prch }vh;
 }
 
+@mixin translateY($amount) {
+  -webkit-transform: translateY($amount);
+  -moz-transform: translateY($amount);
+  -ms-transform: translateY($amount);
+  -o-transform: translateY($amount);
+  -transform: translateY($amount);
+}
+
 // ported from http://medium.com/@Florian/freebie-google-material-design-shadow-helper-2a0501295a2d
 @mixin materialShadow($level){
     @if $level ==  1 {

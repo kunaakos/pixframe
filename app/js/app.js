@@ -27,9 +27,15 @@ var app = (function() {
 
             $('.colorpicker-toggle').click(function(){
                 $('body').toggleClass('show-colorpicker');
+                $('body').removeClass('show-info');
+
             });
             $('.info-toggle').click(function(){
-                alert('no help yet...');
+                $('body').toggleClass('show-info');
+                $('body').removeClass('show-colorpicker');
+            });
+            $('.info-container').click(function(){
+                $('body').removeClass('show-info');
             });
         },
         
