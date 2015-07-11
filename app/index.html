@@ -21,6 +21,9 @@
   <body>
     <div class="main-container">
       <div class="display-container">
+        <div class="colorpicker-container">
+          <div class="colorpicker"></div>
+        </div>
         <div class="matrix-container">
           <div class="matrix-row">
               <div class="matrix-cell"></div>
@@ -103,20 +106,17 @@
               <div class="matrix-cell"></div>
           </div>
         </div>
-        <div class="colorpicker-container">
-          <div class="colorpicker"></div>
-        </div>
+        
         <div class="info-container">
           <div class="info">
             <h1>Pixframe.</h1>
             <p>Whatever you draw here will instantly appear in a picture frame that is currently being fabricated and tested in <a href="http://www.fablabbudapest.com/" target="_blank">FabLab Budapest</a>.</p>
-
+            <p><strong>Beta, man. Sooo very beta.</strong></p>
             <p class="video-icon">
               <a href="https://www.youtube.com/watch?v=AHUvZFjt5xE" target="_blank">
                 <i class="fa fa-youtube"></i>
               </a>
             </p>
-            <iframe class="video" width="100%" height="100%" src="https://www.youtube.com/embed/AHUvZFjt5xE" frameborder="0" allowfullscreen></iframe>
           </div>
         </div>
       </div>
@@ -126,6 +126,16 @@
       </div>
     </div>
 
+    <!-- Begin Google Analytics -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-59223451-2');ga('send','pageview');
+    </script>
+    <!-- End Google Analytics -->
 
     <!-- build:js js/vendor/libraries.min.js -->
     <!-- bower:js -->

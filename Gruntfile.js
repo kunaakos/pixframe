@@ -2,7 +2,7 @@
 
 module.exports = function(grunt) {
 
-    require('load-grunt-tasks')(grunt);
+	require('load-grunt-tasks')(grunt);
 
 
 	grunt.initConfig({
@@ -94,20 +94,20 @@ module.exports = function(grunt) {
 				files: ['Gruntfile.js'],
 				tasks: ['sass'],
 				options: {
-			    	spawn: false,
+					spawn: true,
 				},
 			},
 			sass: {
 				files: '<%= app %>/scss/**/*.scss',
 				tasks: ['sass'],
 				options: {
-      				spawn: false,
-    			},
+					spawn: true,
+				},
 			},
 			livereload: {
 				files: ['<%= app %>/**/*.html', '!<%= app %>/bower_components/**', '<%= app %>/js/**/*.js', '<%= app %>/css/**/*.css', '<%= app %>/images/**/*.{jpg,gif,svg,jpeg,png}'],
 				options: {
-					spawn: false,
+					spawn: true,
 					livereload: true
 				}
 			}
@@ -151,14 +151,14 @@ module.exports = function(grunt) {
 
 		'ftp-deploy': {
 		  production: {
-		    auth: {
-		      host: 'kunakos.ro',
-		      port: 21,
-		      authKey: 'production'
-		    },
-		    src: '<%= dist %>/',
-		    dest: '/',
-		    exclusions: []
+			auth: {
+			  host: 'kunakos.ro',
+			  port: 21,
+			  authKey: 'production'
+			},
+			src: '<%= dist %>/',
+			dest: '/',
+			exclusions: []
 		  }
 		}
 
