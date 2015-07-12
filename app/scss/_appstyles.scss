@@ -16,9 +16,7 @@ body {
 	.colorpicker-container {
 		@include translateY(0%);
 		.colorpicker {
-
 		}
-
 	}
 	.matrix-container {
 		@include translateY(-110%);
@@ -37,8 +35,8 @@ body {
 .main-container {
 		@include containerSize($cols, $rows, $container-width-prc, $container-height-prc);
 		@include materialShadow(1);
-	    position: absolute;
-	    margin: auto;
+	  position: absolute;
+	  margin: auto;
 		top: 0;
 		bottom: 0;
 		left: 0;
@@ -57,15 +55,14 @@ body {
 }
 
 .colorpicker-container, .info-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    overflow: hidden;
+  position: absolute;
+  width: 101%;
+  height: 101%;
+  top: 0;
+  overflow: hidden;
 	@include translateY(110%);
 	@include transitionsTransform(300ms, 0ms);
 	background-color: $bg-dark;
-
 }
 
 .matrix-container {
@@ -76,11 +73,6 @@ body {
 	@include translateY(0%);
 	@include transitionsTransform(300ms, 0ms);
 	background-color: $bg-dark;
-}
-
-.info-container, .info {
-	width: 100%;
-	height: 100%;
 }
 
 .button-container {
