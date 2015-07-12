@@ -34,7 +34,7 @@ $bg-lite: #E3EBED;
   -moz-transform: translateY($amount);
   -ms-transform: translateY($amount);
   -o-transform: translateY($amount);
-  -transform: translateY($amount);
+  transform: translateY($amount);
 }
 
 @mixin transitionsBgColor($len, $del) {

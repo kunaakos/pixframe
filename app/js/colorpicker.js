@@ -1,7 +1,7 @@
 'use strict';
 
 var colorPicker = (function() {
-    
+
   var _palette = null,
       _currentColor = null,
       _colorChangeCb = null,
@@ -33,7 +33,7 @@ var colorPicker = (function() {
     for (var i = 1; i <= nrOfSlices; i++) {
       $('.colorpicker').append(
         "<div class='slice' style='" +
-        "transform:rotate(" + (degrees * (i - 1) + 105) + "deg);" +
+        "transform:rotate(" + (degrees * (i - 1) + 105) + "deg) skewX(55deg);" +
         "-webkit-transform:rotate(" + (degrees * (i - 1) + 105) + "deg) skewX(55deg);" +
         "background-color:" + _palette[i] + ";" +
         "z-index:"+ (100 - i) +

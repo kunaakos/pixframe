@@ -8,7 +8,7 @@ body:not(.show-colorpicker) {
             -webkit-transform: rotate(55deg) skewX(55deg) !important;
             box-sizing: border-box;
             &:first-child{
-                transform: none !important; 
+                transform: none !important;
             }
             &:first-child + .slice {
             }
