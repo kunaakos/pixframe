@@ -34,6 +34,7 @@ var colorPicker = (function() {
       $('.colorpicker').append(
         "<div class='slice' style='" +
         "transform:rotate(" + (degrees * (i - 1) + 105) + "deg) skewX(55deg);" +
+        "-ms-transform:rotate(" + (degrees * (i - 1) + 105) + "deg) skewX(55deg);" +
         "-webkit-transform:rotate(" + (degrees * (i - 1) + 105) + "deg) skewX(55deg);" +
         "background-color:" + _palette[i] + ";" +
         "z-index:"+ (100 - i) +
