@@ -58,7 +58,12 @@ body:not(.show-colorpicker) {
         }
         &:first-child + .slice {
             z-index: 99;
-            // margin-left: #{-$cp-width/2}vh;
+            margin-left: #{-($cp-width - 5) / 2}vh;
+            width: #{$cp-width - 5}vh;
+            @media screen and (max-aspect-ratio: 1/1) {
+                margin-left: #{-($cp-width - 5) / 2}vw;
+                width: #{$cp-width - 5}vw;
+            }
 
         }
     }
