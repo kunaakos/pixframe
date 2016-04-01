@@ -27,7 +27,9 @@ var app = (function() {
       $('.matrix-cell').click(function(event) {
         pixels.set($(this).parent().index(), $(this).index(), color);
       });
-
+      $('.mirroring-toggle').click(function(){
+        $('.matrix-container').toggleClass('mirrored');
+      });
       $('.colorpicker-toggle').click(function(){
           $('body').toggleClass('show-colorpicker');
           $('body').removeClass('show-info');

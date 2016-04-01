@@ -3,8 +3,18 @@
 	height: percentage(1/$rows);
 }
 
+.matrix-container {
+	.matrix-cell {
+		float: left;
+	}
+	&.mirrored {
+		.matrix-cell {
+			float: right;
+		}
+	}
+}
+
 .matrix-cell {
-	float: left;
 	display: block;
 	width: percentage(1/$cols);
 	height: 100%;
