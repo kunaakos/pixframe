@@ -152,25 +152,25 @@ module.exports = function(grunt) {
 		'ftp-deploy': {
 		  production: {
 			auth: {
-			  host: 'kunakos.ro',
+			  host: 'pix.pub',
 			  port: 21,
 			  authKey: 'production'
 			},
 			src: '<%= dist %>/',
-			dest: '/',
+			dest: 'web/',
 			exclusions: []
 		  }
 		}
 
 	});
-	
+
 	grunt.registerTask('compile-sass', ['sass']);
 	grunt.registerTask('bower-install', ['wiredep']);
-	
+
 	grunt.registerTask('default', ['compile-sass', 'bower-install', 'connect:app', 'watch']);
 	grunt.registerTask('validate-js', ['jshint']);
 	grunt.registerTask('server-dist', ['connect:dist']);
-	
+
 	grunt.registerTask('build', ['compile-sass', 'clean:dist', 'useminPrepare', 'copy:dist', 'newer:imagemin', 'concat', 'cssmin', 'uglify', 'usemin']);
 	grunt.registerTask('deploy', ['build', 'ftp-deploy']);
 
