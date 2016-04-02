@@ -5,10 +5,6 @@ body:not(.show-colorpicker) {
     .colorpicker {
         .slice {
             transform: rotate(55deg) skewX(55deg) !important;
-            -ms-transform: rotate(55deg) skewX(55deg) !important;
-            -webkit-transform: rotate(55deg) skewX(55deg) !important;
-            -moz-box-sizing: border-box;
-            -webkit-box-sizing: border-box;
             box-sizing: border-box;
             &:first-child{
                 transform: none !important;
@@ -22,7 +18,7 @@ body:not(.show-colorpicker) {
     position: relative;
     height: 100%;
     width: 100%;
-    @include transitionsTransform(500ms, 0ms);
+    transition: transform 500ms ease-out;
     .slice {
         position: absolute;
         top: 50%;
@@ -37,9 +33,10 @@ body:not(.show-colorpicker) {
             width: #{$cp-width}vw;
             height: #{$cp-height}vw;
         }
-        @include transformOrigin(bottom center);
-        @include boxSizing(border-box);
-        @include transitionsAll(500ms, 0ms);
+        transform-origin: bottom center;
+        box-sizing: border-box;
+        transition: all 500ms ease-out;
+
         &:first-child{
             width: #{$cp-width}vh;
             height: #{$cp-width}vh;

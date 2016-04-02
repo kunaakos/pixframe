@@ -29,41 +29,5 @@
 		&:hover {
 			color: $bg-lite;
 		}
-	}
-
-	// MUST
-	// REMOVE
-	// STUPID
-	.video {
-		opacity: 0;
-		margin-top: -25vh;
-		padding-top: 50vh;
-		&:hover {
-			padding-top: 0;
-			margin-top: -73.5vh;
-			opacity: 1;
-		}
-		@media screen and (max-aspect-ratio: 1/1) {
-			margin-top: -25vw;
-			padding-top: 50vw;
-			&:hover {
-				margin-top: -73.5vw;
-			}
-		}
-		@include transitionsAll(150ms, 0ms);
-	}
-
-	.video-icon {
-		margin-top: 11vh;
-		text-align: center;
-		.fa {
-			font-size: 20vh;
-		}
-		@media screen and (max-aspect-ratio: 1/1) {
-			margin-top: 15vw;
-			.fa {
-				font-size: 20vw;
-			}
-		}
-	}
+	}	
 }

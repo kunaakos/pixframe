@@ -22,5 +22,5 @@
 	&:hover {
 		opacity: 0.8;
 	}
-	@include transitionsBgColor(500ms, 0ms);
+	transition: background-color 500ms ease-out, opacity 500ms ease-out;
 }

@@ -93,16 +93,9 @@ module.exports = function(grunt) {
     },
 
     watch: {
-      grunt: {
-        files: ['Gruntfile.js'],
-        tasks: ['sass'],
-        options: {
-          spawn: true,
-        },
-      },
       sass: {
         files: '<%= app %>/scss/**/*.scss',
-        tasks: ['sass'],
+        tasks: ['compile-sass'],
         options: {
           spawn: true,
         },

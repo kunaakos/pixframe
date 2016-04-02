@@ -29,43 +29,6 @@ $bg-lite: #E3EBED;
   max-width: #{ $cols / $rows * $prch }vh;
 }
 
-@mixin translateY($amount) {
-  -webkit-transform: translateY($amount);
-  -moz-transform: translateY($amount);
-  -ms-transform: translateY($amount);
-  transform: translateY($amount);
-}
-
-@mixin transitionsBgColor($len, $del) {
-  -webkit-transition: background-color $len ease-out $del, opacity $len ease-out $del;
-  -moz-transition: background-color $len ease-out $del, opacity $len ease-out $del;
-  transition: background-color $len ease-out $del, opacity $len ease-out $del;
-}
-
-@mixin transitionsTransform($len, $del) {
-  -webkit-transition: transform $len ease-out $del;
-  -moz-transition: transform $len ease-out $del;
-  transition: transform $len ease-out $del;
-}
-
-@mixin transitionsAll($len, $del) {
-  -webkit-transition: all $len ease-out $del;
-  -moz-transition: all $len ease-out $del;
-  transition: all $len ease-out $del;
-}
-
-@mixin transformOrigin($where) {
-  -ms-transform-origin: $where;
-  -webkit-transform-origin: $where;
-  transform-origin: $where;
-}
-
-@mixin boxSizing($what) {
-  -moz-box-sizing: $what;
-  -webkit-box-sizing: $what;
-  box-sizing: $what;
-}
-
 // ported from http://medium.com/@Florian/freebie-google-material-design-shadow-helper-2a0501295a2d
 @mixin materialShadow($level){
     @if $level ==  1 {
