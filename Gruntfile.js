@@ -28,7 +28,7 @@ module.exports = function(grunt) {
         map: true, // inline sourcemaps
         processors: [
           require('autoprefixer')({
-            browsers: 'last 2 versions'
+            browsers: 'Firefox >= 19, Chrome >= 20, ie >=9, Edge >= 12, Opera >= 15, Safari >=6, iOS >= 6.1, ExplorerMobile >= 10, Android >= 4.4, last 6 versions' // viewport units are the bottleneck
           })
         ]
       },
@@ -114,7 +114,7 @@ module.exports = function(grunt) {
         options: {
           port: 9000,
           base: '<%= app %>/',
-          open: true,
+          open: false,
           livereload: true,
           hostname: 'localhost'
         }
@@ -123,7 +123,7 @@ module.exports = function(grunt) {
         options: {
           port: 9000,
           base: '<%= dist %>/',
-          open: true,
+          open: false,
           keepalive: true,
           livereload: false,
           hostname: 'localhost'
