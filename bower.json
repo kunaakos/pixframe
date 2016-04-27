@@ -1,7 +1,4 @@
 {
   "name": "pixframe",
-  "dependencies": {
-    "font-awesome": "~4.2.0",
-    "jquery": "~2.1.3"
-  }
+  "dependencies": {}
 }

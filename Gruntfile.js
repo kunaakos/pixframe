@@ -8,10 +8,24 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     app: 'app',
     dist: 'dist',
+    temp: '.tmp',
+
+    pug: {
+      compile: {
+        options: {
+          data: {
+            debug: true
+          }
+        },
+        files: {
+          '<%= app %>/index.html': ['<%= app %>/templates/index.pug']
+        }
+      }
+    },
 
     sass: {
       options: {
-        includePaths: ['<%= app %>/bower_components/foundation/scss']
+        includePaths: []
       },
       dist: {
         options: {
@@ -51,6 +65,9 @@ module.exports = function(grunt) {
       dist: {
         src: ['<%= dist %>/*']
       },
+      temp: {
+        src: ['<%= temp %>/*']
+      },
     },
 
     copy: {
@@ -58,14 +75,8 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: '<%= app %>/',
-          src: ['fonts/**', '**/*.html', '!**/*.scss', '!bower_components/**'],
+          src: ['fonts/**', '**/*.html', '!**/*.scss'],
           dest: '<%= dist %>/'
-        }, {
-          expand: true,
-          flatten: true,
-          src: ['<%= app %>/bower_components/font-awesome/fonts/**'],
-          dest: '<%= dist %>/fonts/',
-          filter: 'isFile'
         }]
       },
     },
@@ -85,7 +96,7 @@ module.exports = function(grunt) {
     },
 
     usemin: {
-      html: ['<%= dist %>/**/*.html', '!<%= app %>/bower_components/**'],
+      html: ['<%= dist %>/**/*.html'],
       css: ['<%= dist %>/css/**/*.css'],
       options: {
         dirs: ['<%= dist %>']
@@ -101,7 +112,7 @@ module.exports = function(grunt) {
         },
       },
       livereload: {
-        files: ['<%= app %>/**/*.html', '!<%= app %>/bower_components/**', '<%= app %>/js/**/*.js', '<%= app %>/css/**/*.css', '<%= app %>/images/**/*.{jpg,gif,svg,jpeg,png}'],
+        files: ['<%= app %>/**/*.html', '<%= app %>/js/**/*.js', '<%= app %>/css/**/*.css', '<%= app %>/images/**/*.{jpg,gif,svg,jpeg,png}'],
         options: {
           spawn: true,
           livereload: true
@@ -138,7 +149,6 @@ module.exports = function(grunt) {
         ],
         exclude: [
           'modernizr',
-          'font-awesome',
           'jquery-placeholder'
         ]
       }
@@ -162,7 +172,10 @@ module.exports = function(grunt) {
   grunt.registerTask('compile-sass', ['sass', 'postcss']);
   grunt.registerTask('bower-install', ['wiredep']);
 
-  grunt.registerTask('default', ['compile-sass', 'bower-install', 'connect:app', 'watch']);
+  grunt.registerTask('pugit', ['pug']);
+
+
+  grunt.registerTask('default', ['clean:temp', 'compile-sass', 'bower-install', 'connect:app', 'watch']);
   grunt.registerTask('validate-js', ['jshint']);
   grunt.registerTask('server-dist', ['connect:dist']);
   grunt.registerTask('build', ['compile-sass', 'clean:dist', 'useminPrepare', 'copy:dist', 'concat', 'cssmin', 'uglify', 'usemin']);
