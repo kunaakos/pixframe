@@ -1,17 +1,18 @@
 $cols: 8;
 $rows: 8;
 
-$container-border-width: 2.5;
+$container-border-width: 2;
 $container-border-bottom-width: 7;
 $button-font-size: 5;
 
-$container-border-height-prc: 85;
-$container-border-width-prc: 90;
+$container-border-height-prc: 90;
+$container-border-width-prc: 97;
 $container-border-top: 100 - $container-border-height-prc - $container-border-width;
+
 
 $container-height-prc: $container-border-height-prc - 2 * $container-border-width;
 $container-width-prc: $container-border-width-prc - 3 * $container-border-width;
 $container-top: 100 - $container-height-prc - 2 * $container-border-width;
 
-$bg-dark: #b8c6c9;
-$bg-lite: #E3EBED;
+$bg-dark: #b2b2b2;
+$bg-lite: #FAFAFA;

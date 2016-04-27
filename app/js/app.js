@@ -28,7 +28,7 @@ var app = (function() {
         pixels.set($(this).parent().index(), $(this).index(), color);
       });
       $('.mirroring-toggle').click(function(){
-        $('.matrix-container').toggleClass('mirrored');
+        $('.matrix-ct').toggleClass('mirrored');
       });
       $('.colorpicker-toggle').click(function(){
           $('body').toggleClass('show-colorpicker');
@@ -38,7 +38,7 @@ var app = (function() {
           $('body').toggleClass('show-info');
           $('body').removeClass('show-colorpicker');
       });
-      $('.info-container').click(function(){
+      $('.info-ct').click(function(){
           $('body').removeClass('show-info');
       });
   },
@@ -74,6 +74,7 @@ var app = (function() {
   _changeColor = function(newColor) {
     color = newColor;
     $('body').removeClass('show-colorpicker');
+    $('.colorpicker-toggle').css('background', palette[newColor]);
   }
 
   return {
