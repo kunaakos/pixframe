@@ -11,115 +11,120 @@ body {
 	margin: 0;
 }
 
-.show-colorpicker {
-	.colorpicker-ct {
+#device>#display {
+	#colorpicker {
+		transform: translateY(101%);
+	}
+
+	#info {
+		transform: translateY(-101%);
+	}
+
+	#matrix {
 		transform: translateY(0%);
-		.colorpicker {
+	}
+
+	&.show-colorpicker {
+		#colorpicker {
+			transform: translateY(0%);
+		}
+		#matrix {
+			transform: translateY(-101%);
 		}
 	}
-	.matrix-ct {
-		transform: translateY(-110%);
+
+	&.show-info {
+		#info {
+			transform: translateY(0%);
+		}
+		#matrix {
+			transform: translateY(101%);
+		}
 	}
 }
 
-.show-info {
-	.info-ct {
-		transform: translateY(0%);
-	}
-	.matrix-ct {
-		transform: translateY(-110%);
-	}
-}
-
-.main-ct {
-	@include containerWidthOnly($cols, $rows, $container-width-prc, $container-height-prc);
-	height: #{ $rows / $cols * ($container-border-width-prc + 8) }vw;
-  max-height: #{ $container-border-height-prc + 8 }vh;
+#device {
 	position: absolute;
 	margin: auto;
 	top: 0;
 	bottom: 0;
 	left: 0;
 	right: 0;
+	@include containerWidthOnly($cols, $rows, $container-width-prc, $container-height-prc);
+	height: #{ $rows / $cols * ($container-border-width-prc + 8) }vw;
+	max-height: #{ $container-border-height-prc + 8 }vh;
 }
 
-.frame {
-	@include containerSize($cols, $rows, $container-width-prc, $container-height-prc);
-	// overflow: hidden;
+#device>#display {
 	position: relative;
-	background-color: $bg-dark;
-	// border: #{$container-border-width}vh solid $bg-lite;
-	// border-radius: 1%;
-	box-sizing: border-box;
-	// @include materialShadow(1);
-}
-
-.display {
-	// @include materialShadow(1);
-	box-shadow: -1vmin 1vmin 0px rgba(0,0,0,0.64);
-	position: absolute;
-	width: 100%;
-	height: 100%;
 	top: 0;
 	left: 0;
 	overflow: hidden;
-}
-
-.container {
-	position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-	left: 0;
-  overflow: hidden;
-	transition: transform 300ms ease-out;
 	background-color: $bg-dark;
+	box-shadow: -1vmin 1vmin 0px $line-color;
+	@include containerSize($cols, $rows, $container-width-prc, $container-height-prc);
+	.panel {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		overflow: hidden;
+		transition: all 300ms ease-out;
+		background-color: $bg-dark;
+	}
 }
 
-.colorpicker-ct, .info-ct {
-	transform: translateY(110%);
-}
-
-.matrix-ct {
-	transform: translateY(0%);
-}
-
-.buttons {
+#device>#controls {
 	@include containerWidthOnly($cols, $rows, $container-width-prc, $container-height-prc);
 	position: relative;
 	text-align: right;
-	margin-top: 2vmin;
-}
-
-.button {
-	display: inline-block;
-	font-size: #{$button-font-size}vh;
-	width: #{$button-font-size}vh;
-	height: #{$button-font-size}vh;
-	padding: #{$button-font-size / 3}vh;
-	margin: 0 0 0 2vmin;
-	// margin-top: #{$container-border-bottom-width / 4}vh;
-	// color: darken($bg-dark, 20%);
-	color: white;
-	background-color: $bg-dark;
-	// border-radius: 50%;
-	// @include materialShadow(1);
-	box-shadow: -1vmin 1vmin 0px rgba(0,0,0,0.64);
-
-	cursor: pointer;
-}
-
-.colorpicker-toggle {
-	// font-size: #{$button-font-size * 1.4}vh;
-	// width: #{$button-font-size * 1.4}vh;
-	// transform: translateY( #{$button-font-size * 0.2}vh );
-	// color: $bg-dark;
-	// transition: color 500ms ease-out;
-}
-
-.mirroring-toggle {
-}
-
-.info-toggle {
-
+	margin-top: 1vmin;
+	position: absolute;
+  user-select: none;
+  .button {
+    width: $btn-width;
+    height: $btn-width;
+    position: relative;
+    display: inline-block;
+    margin: $btn-border-width 0 $btn-border-width $btn-border-width;
+    &:before {
+      content: "";
+      width: $btn-width - $btn-border-width;
+      height: $btn-width - $btn-border-width;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background: $line-color;
+    }
+    .icon {
+      width: $btn-width - $btn-border-width;
+      height: $btn-width - $btn-border-width;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: $bg-dark;
+      transition: transform 120ms ease-in-out;
+			overflow: hidden;
+			.switcher {
+				width: 100%;
+				height: 100%;
+				&.switch {
+					transform: translateY(-100%);
+				}
+			}
+			svg {
+				width: 100%;
+				height: 100%;
+				display: block;
+				.paths {
+					fill: $line-color;
+					transition: fill 250ms ease-in-out;
+				}
+			}
+      &:active {
+        transform: translate(- $btn-border-width, $btn-border-width)
+      }
+    }
+  }
 }

@@ -1,0 +1,14 @@
+-var colors=16;
+-var slices=colors-1;
+-var sliceAngle=Math.PI*2/slices;
+
+svg#palette(width=100 height=100 viewBox="-50 -50 100 100" preserveAspectRatio="xMinYMin meet" shape-rendering="geometricPrecision")
+  rect.bg(x="-50" y="-50" width="100" height="100" fill="none")
+  -for (var s=slices; s>0; --s)
+    -var angle=sliceAngle*(s-1) - Math.PI/2;
+    -var cx0=100*Math.cos(angle - sliceAngle/2);
+    -var cy0=100*Math.sin(angle - sliceAngle/2);
+    -var cx1=100*Math.cos(angle + sliceAngle/2);
+    -var cy1=100*Math.sin(angle + sliceAngle/2);
+    polygon(class="slice s"+s data-slice=s points="0,0 "+cx0+","+cy0+" "+cx1+","+cy1)
+  ellipse.slice.s0(data-slice="0" cx="0" cy="0" rx="20" ry="20")

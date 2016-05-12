@@ -18,28 +18,28 @@ var app = (function() {
           // return false;
       });
       // drag painting
-      $('.matrix-cell').mouseover(function(event) {
+      $('.c').mouseover(function(event) {
         if (event.buttons) {
-           pixels.set($(this).parent().index(), $(this).index(), color);
+           pixels.set($(this).data('r'), $(this).data('c'), color);
         };
       });
       // click painting
-      $('.matrix-cell').click(function(event) {
-        pixels.set($(this).parent().index(), $(this).index(), color);
+      $('.c').click(function(event) {
+        pixels.set($(this).data('r'), $(this).data('c'), color);
       });
       $('.mirroring-toggle').click(function(){
-        $('.matrix-ct').toggleClass('mirrored');
+        $('#matrix').toggleClass('mirrored');
       });
       $('.colorpicker-toggle').click(function(){
-          $('body').toggleClass('show-colorpicker');
-          $('body').removeClass('show-info');
+          $('#display').toggleClass('show-colorpicker');
+          $('#display').removeClass('show-info');
       });
       $('.info-toggle').click(function(){
-          $('body').toggleClass('show-info');
-          $('body').removeClass('show-colorpicker');
+          $('#display').toggleClass('show-info');
+          $('#display').removeClass('show-colorpicker');
       });
       $('.info-ct').click(function(){
-          $('body').removeClass('show-info');
+          $('#display').removeClass('show-info');
       });
   },
 
@@ -55,11 +55,11 @@ var app = (function() {
       pattern = newPattern;
     }
     if (palette && pattern) {
-      $('.matrix-row').each(function(indexRow) {
-        $(this).children('.matrix-cell').each(function(indexColumn){
-            $(this).css('background-color', palette[pattern[indexRow][indexColumn]]);
-        });
-      });
+      $('.c').each(function(){
+        var row = $(this).data('r');
+        var col = $(this).data('c');
+        $(this).attr('fill', palette[pattern[row][col]]);
+      })
     }
   },
 
@@ -67,14 +67,14 @@ var app = (function() {
     if (newPalette) {
       palette = newPalette;
     }
-    _displayPattern(); // redraw of the pattern is needed
-    colorPicker.init(palette); // and color picker too
+    _displayPattern();
+    colorPicker.init(palette);
   },
 
   _changeColor = function(newColor) {
     color = newColor;
-    $('body').removeClass('show-colorpicker');
-    $('.colorpicker-toggle').css('background', palette[newColor]);
+    // $('#display').removeClass('show-colorpicker');
+    $('.colorpicker-toggle>.icon>svg.color>.paths').css('fill', palette[newColor]);
   }
 
   return {

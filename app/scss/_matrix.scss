@@ -1,28 +1,16 @@
+#matrix {
+	// perspective: 5000;
+	&.mirrored>#m {
+		transform: rotateY(180deg);
+	}
+}
 
-
-.matrix-row {
+#m {
 	width: 100%;
-	height: percentage(1/$rows);
-}
-
-.matrix-ct {
-	.matrix-cell {
-		float: left;
-	}
-	&.mirrored {
-		.matrix-cell {
-			float: right;
-		}
-	}
-}
-
-.matrix-cell {
-	display: block;
-	width: percentage(1/$cols);
 	height: 100%;
-	cursor: pointer;
-	&:hover {
-		opacity: 0.8;
+	fill: transparent;
+	transition: transform 500ms ease-in-out;
+	.c {
+		transition: fill 200ms ease-in-out;
 	}
-	transition: background-color 500ms ease-out, opacity 500ms ease-out;
 }

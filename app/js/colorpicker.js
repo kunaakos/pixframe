@@ -8,9 +8,9 @@ var colorPicker = (function() {
 
   _init = function(palette) {
     _palette = palette;
-    _renderHTML();
+    _colorSlices();
     $('.slice').click(function(){
-      _currentColor = $(this).index();
+      _currentColor = $(this).data('slice');
       console.log("set color: " + _currentColor);
       if (_colorChangeCb) _colorChangeCb(_currentColor);
     });
@@ -20,26 +20,10 @@ var colorPicker = (function() {
     _colorChangeCb = callback;
   },
 
-  // spaghetti alert!
-  _renderHTML = function() {
-    var nrOfSlices = _palette.length -1;
-    var degrees = 360 / (nrOfSlices);
-    $('.colorpicker').empty();
-    $('.colorpicker').append(
-      "<div class='slice' style='" +
-            "background-color:" + _palette[0] +
-      "'></div>"
-    );
-    for (var i = 1; i <= nrOfSlices; i++) {
-      $('.colorpicker').append(
-        "<div class='slice' style='" +
-        "transform:rotate(" + (degrees * (i - 1) + 105) + "deg) skewX(55deg);" +
-        "-ms-transform:rotate(" + (degrees * (i - 1) + 105) + "deg) skewX(55deg);" +
-        "-webkit-transform:rotate(" + (degrees * (i - 1) + 105) + "deg) skewX(55deg);" +
-        "background-color:" + _palette[i] + ";" +
-        "z-index:"+ (100 - i) +
-        "'></div>"
-      );
+  _colorSlices = function() {
+    var nrOfSlices = _palette.length - 1;
+    for (var i = 0; i <= nrOfSlices; i++) {
+      $('#palette>.slice.s'+i).attr('fill', _palette[i]);
     };
   }
 

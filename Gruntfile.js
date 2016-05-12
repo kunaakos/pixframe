@@ -13,8 +13,12 @@ module.exports = function(grunt) {
     pug: {
       compile: {
         options: {
+          pretty: true,
           data: {
-            debug: true
+            debug: true,
+            building: function() {
+              return false
+            }
           }
         },
         files: {
@@ -75,7 +79,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: '<%= app %>/',
-          src: ['fonts/**', '**/*.html', '!**/*.scss'],
+          src: [ 'index.html'],
           dest: '<%= dist %>/'
         }]
       },
@@ -107,6 +111,13 @@ module.exports = function(grunt) {
       sass: {
         files: '<%= app %>/scss/**/*.scss',
         tasks: ['compile-sass'],
+        options: {
+          spawn: true,
+        },
+      },
+      pug: {
+        files: '<%= app %>/templates/**/*.pug',
+        tasks: ['pug'],
         options: {
           spawn: true,
         },
@@ -170,15 +181,13 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('compile-sass', ['sass', 'postcss']);
-  grunt.registerTask('bower-install', ['wiredep']);
 
-  grunt.registerTask('pugit', ['pug']);
-
-
-  grunt.registerTask('default', ['clean:temp', 'compile-sass', 'bower-install', 'connect:app', 'watch']);
+  grunt.registerTask('default', ['clean:temp', 'pug', 'compile-sass', 'wiredep', 'connect:app', 'watch']);
   grunt.registerTask('validate-js', ['jshint']);
   grunt.registerTask('server-dist', ['connect:dist']);
-  grunt.registerTask('build', ['compile-sass', 'clean:dist', 'useminPrepare', 'copy:dist', 'concat', 'cssmin', 'uglify', 'usemin']);
+  grunt.registerTask('build', ['clean', 'pug', 'compile-sass', 'wiredep', 'useminPrepare', 'copy:dist', 'concat', 'cssmin', 'uglify', 'usemin']);
   grunt.registerTask('deploy', ['build', 'ftp-deploy']);
+
+  console.log(grunt.task.current.name);
 
 };

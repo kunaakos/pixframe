@@ -20,7 +20,7 @@
     "grunt-contrib-copy": "*",
     "grunt-contrib-cssmin": "*",
     "grunt-contrib-jshint": "*",
-    "grunt-contrib-pug": "0.0.0",
+    "grunt-contrib-pug": "1.0.0",
     "grunt-contrib-uglify": "*",
     "grunt-contrib-watch": "*",
     "grunt-ftp-deploy": "*",

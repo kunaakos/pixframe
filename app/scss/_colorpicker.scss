@@ -1,66 +1,33 @@
-$cp-width: 40;
-$cp-height: 60;
+$tr-base-length: 25ms;
 
-body:not(.show-colorpicker) {
-    .colorpicker {
-        .slice {
-            transform: rotate(55deg) skewX(55deg) !important;
-            box-sizing: border-box;
-            &:first-child{
-                transform: none !important;
-            }
-            &:first-child + .slice {
-            }
-        }
-    }
+#palette {
+  width: 100%;
+  height: 100%;
+  fill: $bg-dark;
+  .slice {
+    transform: rotate(0deg);
+    transition: transform 400ms ease-out, fill 300ms ease-out;
+  }
+  .s0 {
+    transform: scale(1);
+  }
 }
-.colorpicker {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    transition: transform 500ms ease-out;
-    .slice {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin-top: #{-$cp-height}vh;
-        margin-left: #{-$cp-width/2}vh;
-        width: #{$cp-width}vh;
-        height: #{$cp-height}vh;
-        @media screen and (max-aspect-ratio: 1/1) {
-            margin-top: #{-$cp-height}vw;
-            margin-left: #{-$cp-width/2}vw;
-            width: #{$cp-width}vw;
-            height: #{$cp-height}vw;
-        }
-        transform-origin: bottom center;
-        box-sizing: border-box;
-        transition: all 500ms ease-out;
 
-        &:first-child{
-            width: #{$cp-width}vh;
-            height: #{$cp-width}vh;
-            margin-top: #{-$cp-width/2}vh;
-            margin-left: #{-$cp-width/2}vh;
-            border-radius: #{$cp-width}vh;
-            @media screen and (max-aspect-ratio: 1/1) {
-                width: #{$cp-width}vw;
-                height: #{$cp-width}vw;
-                margin-top: #{-$cp-width/2}vw;
-                margin-left: #{-$cp-width/2}vw;
-                border-radius: #{$cp-width}vw;
-            }
-            z-index: 100;
-        }
-        &:first-child + .slice {
-            z-index: 99;
-            margin-left: #{-($cp-width - 5) / 2}vh;
-            width: #{$cp-width - 5}vh;
-            @media screen and (max-aspect-ratio: 1/1) {
-                margin-left: #{-($cp-width - 5) / 2}vw;
-                width: #{$cp-width - 5}vw;
-            }
+$colors: 16;
+$angle: 360deg / ( $colors - 1 );
 
+#display:not(.show-colorpicker) {
+    #colorpicker {
+      @for $i from 2 through 15 {
+        .s1 {
+          fill: $bg-dark;
         }
+        .s#{$i} {
+          transform: rotate( - $angle * ( $i - 1 ) );
+        }
+      }
+      .s0 {
+        transform: scale(0);
+      }
     }
 }

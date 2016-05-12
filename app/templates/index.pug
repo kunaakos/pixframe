@@ -3,39 +3,39 @@ html.no-js
   head
     meta(charset='utf-8')
     title pix.pub
-    meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
-    meta(name='description', content='')
+    meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no')
+    meta(name='description' content='')
     link(rel='stylesheet' href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,700' type='text/css')
     | <!-- build:css css/libraries.min.css -->
     | <!-- bower:css -->
     | <!-- endbower -->
     | <!-- endbuild -->
     | <!-- build:css css/app.min.css -->
-    link(rel='stylesheet', href='css/app.css')
+    | <link rel="stylesheet" href="css/app.css">
     | <!-- endbuild -->
     //-script(src='javascripts/vendor/modernizr-2.7.1.min.js')
-  body
 
-    div(class='main-ct')
-      div(class='frame')
-        div(class='display')
-          div(class='matrix-ct container')
-            -for(var row=0; row<8; ++row)
-              div(class='matrix-row')
-                -for(var col=0; col<8; ++col)
-                  div(class='matrix-cell')
-          div(class='colorpicker-ct container')
-            div(class='colorpicker')
-          div(class='info-ct container')
-            div(class='info')
-              | <h1>pix.pub</h1>
-              | <p>Whatever you draw here will instantly appear in a picture frame that is currently exhibited in a bar somewhere.</p>
-              | <p>Made in <a href="http://www.fablabbudapest.com/" target="_blank">FabLab&nbsp;Budapest</a> by <a href="http://kunakos.ro/" target="_blank">Kún&nbsp;Ákos</a> and <a href="http://demetamas.com/" target="_blank">Deme&nbsp;Tamás</a>.</p>
-              | <p><strong>Beta, man. Sooo very beta.</strong></p>
-      div(class='buttons')
-        div(class='button mirroring-toggle')
-        div(class='button colorpicker-toggle')
-        div(class='button info-toggle')
+  body
+    div#device
+      div#display
+        div#matrix.panel
+          include includes/matrix.pug
+        div#colorpicker.panel
+          include includes/colorpicker.pug
+        div#info.panel
+          include includes/info.pug
+      div#controls
+        div.button.mirroring-toggle
+          a.icon
+            include icons/mirroring.svg
+        div.button.colorpicker-toggle
+          a.icon
+            div.switcher
+              include icons/colorpicker.svg
+              include icons/eraser.svg
+        div.button.info-toggle
+          a.icon
+            include icons/info.svg
 
     script(src='https://cdn.firebase.com/js/client/2.2.1/firebase.js')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')
@@ -47,7 +47,10 @@ html.no-js
     | <!-- endbuild -->
 
     | <!-- build:js js/app.min.js -->
-    script(src='js/pixels.js')
-    script(src='js/colorpicker.js')
-    script(src='js/app.js')
+    | <script src="js/pixels.js"></script>
+    | <script src="js/colorpicker.js"></script>
+    | <script src="js/app.js"></script>
     | <!-- endbuild -->
+
+    -if (building())
+      include includes/analytics.pug
