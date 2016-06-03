@@ -15,10 +15,7 @@ module.exports = function(grunt) {
         options: {
           pretty: true,
           data: {
-            debug: true,
-            building: function() {
-              return false
-            }
+            debug: true
           }
         },
         files: {
@@ -107,6 +104,22 @@ module.exports = function(grunt) {
       }
     },
 
+    filerev: {
+      options: {
+        encoding: 'utf8',
+        algorithm: 'md5',
+        length: 8
+      },
+      source: {
+        files: [{
+          src: [
+            '<%= dist %>/js/**/*.js',
+            '<%= dist %>/css/**/*.css'
+          ]
+        }]
+      }
+    },
+
     watch: {
       sass: {
         files: '<%= app %>/scss/**/*.scss',
@@ -185,9 +198,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['clean:temp', 'pug', 'compile-sass', 'wiredep', 'connect:app', 'watch']);
   grunt.registerTask('validate-js', ['jshint']);
   grunt.registerTask('server-dist', ['connect:dist']);
-  grunt.registerTask('build', ['clean', 'pug', 'compile-sass', 'wiredep', 'useminPrepare', 'copy:dist', 'concat', 'cssmin', 'uglify', 'usemin']);
+  grunt.registerTask('build', ['clean', 'pug', 'compile-sass', 'wiredep', 'useminPrepare', 'copy:dist', 'concat', 'cssmin', 'uglify', 'filerev', 'usemin']);
   grunt.registerTask('deploy', ['build', 'ftp-deploy']);
-
-  console.log(grunt.task.current.name);
 
 };

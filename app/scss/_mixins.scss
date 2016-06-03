@@ -11,12 +11,12 @@
   max-width: #{ $cols / $rows * $prch }vh;
 }
 
-@mixin containerWidth($cols, $rows, $prcw, $prch) {
+@mixin containerWidth($ratio, $prcw, $prch) {
   width: #{ $prcw }vw;
-  max-width: #{ $cols / $rows * $prch }vh;
+  max-width: #{ $ratio * $prch }vh;
 }
 
-@mixin containerHeight($cols, $rows, $prcw, $prch) {
-  height: #{ $rows / $cols * $prcw }vw;
+@mixin containerHeight($ratio, $prcw, $prch) {
+  height: #{ 1 / $ratio * $prcw }vw;
   max-height: #{ $prch }vh;
 }

@@ -1,8 +1,8 @@
 -var cellSize=10;
 -var rows=8;
 -var cols=8;
--var width=rows*cellSize;
--var height=cols*cellSize;
+-var width=cols*cellSize;
+-var height=rows*cellSize;
 svg#m(width=width height=height viewBox="0 0 "+width+" "+height preserveAspectRatio="xMinYMin meet" shape-rendering="crispEdges")
   -for (var y=0; y<rows; ++y) {
     g(class="r r"+y)

@@ -1,20 +1,22 @@
-$cols: 8;
 $rows: 8;
+$columns: 8;
 
-$container-border-width: 2;
-$container-border-bottom-width: 7;
+$btn-size: 1; // $btn-size * "pixel" width
+$btn-width: 100% / $columns * $btn-size;
+$btn-border-width: 10%;
 
-$container-border-height-prc: 90;
-$container-border-width-prc: 100;
-$container-border-top: 100 - $container-border-height-prc - $container-border-width;
+$disp-to-dev: $rows / ($rows + $btn-size);
+@debug $disp-to-dev;
+$ctrl-to-dev: $btn-size / ($rows + $btn-size);
+@debug $ctrl-to-dev;
+$device-asr: $columns / ($rows + $btn-size);
+@debug $device-asr;
+$display-asr: $columns / $rows;
+@debug $display-asr;
 
-$container-height-prc: $container-border-height-prc - 2 * $container-border-width;
-$container-width-prc: $container-border-width-prc - 3 * $container-border-width;
-$container-top: 100 - $container-height-prc - 2 * $container-border-width;
+$heightprc: 95;  // viewport height fill
+$widthprc: 96;  // viewport width fill
 
 $bg-dark: #b2b2b2;
 $bg-lite: #ECECEC;
 $line-color: #555555;
-
-$btn-width: 10vmin;
-$btn-border-width: 1vmin;

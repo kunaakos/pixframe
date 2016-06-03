@@ -73,7 +73,7 @@ var app = (function() {
 
   _changeColor = function(newColor) {
     color = newColor;
-    // $('#display').removeClass('show-colorpicker');
+    $('#display').removeClass('show-colorpicker');
     $('.colorpicker-toggle>.icon>svg.color>.paths').css('fill', palette[newColor]);
   }
 

@@ -17,13 +17,14 @@ html.no-js
 
   body
     div#device
-      div#display
-        div#matrix.panel
-          include includes/matrix.pug
-        div#colorpicker.panel
-          include includes/colorpicker.pug
-        div#info.panel
-          include includes/info.pug
+      div#display-ct
+        div#display
+          div#matrix.panel
+            include includes/matrix.pug
+          div#colorpicker.panel
+            include includes/colorpicker.pug
+          div#info.panel
+            include includes/info.pug
       div#controls
         div.button.mirroring-toggle
           a.icon
@@ -52,5 +53,4 @@ html.no-js
     | <script src="js/app.js"></script>
     | <!-- endbuild -->
 
-    -if (building())
-      include includes/analytics.pug
+    //- include includes/analytics.pug

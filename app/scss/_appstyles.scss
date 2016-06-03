@@ -11,13 +11,13 @@ body {
 	margin: 0;
 }
 
-#device>#display {
+#display {
 	#colorpicker {
-		transform: translateY(101%);
+		transform: translateY(100%);
 	}
 
 	#info {
-		transform: translateY(-101%);
+		transform: translateY(-100%);
 	}
 
 	#matrix {
@@ -29,7 +29,7 @@ body {
 			transform: translateY(0%);
 		}
 		#matrix {
-			transform: translateY(-101%);
+			transform: translateY(-100%);
 		}
 	}
 
@@ -38,35 +38,52 @@ body {
 			transform: translateY(0%);
 		}
 		#matrix {
-			transform: translateY(101%);
+			transform: translateY(100%);
 		}
 	}
 }
 
+// this is the main container, it fills the screen
 #device {
+	@include containerWidth($device-asr, $widthprc, $heightprc);
+	@include containerHeight($device-asr, $widthprc, $heightprc);
+	// background: red;
 	position: absolute;
-	margin: auto;
 	top: 0;
 	bottom: 0;
 	left: 0;
 	right: 0;
-	@include containerWidthOnly($cols, $rows, $container-width-prc, $container-height-prc);
-	height: #{ $rows / $cols * ($container-border-width-prc + 8) }vw;
-	max-height: #{ $container-border-height-prc + 8 }vh;
+	margin: auto;
 }
 
-#device>#display {
-	position: relative;
-	top: 0;
-	left: 0;
-	overflow: hidden;
+// the display container
+#display-ct {
+	width: 100%;
+	height: 100% * $disp-to-dev;
 	background-color: $bg-dark;
-	box-shadow: -1vmin 1vmin 0px $line-color;
-	@include containerSize($cols, $rows, $container-width-prc, $container-height-prc);
-	.panel {
+	// pseudo element as a shadow
+	// can't use % with box-shadows
+	&:before {
+		content: "";
+		width: 100%;
+		height: 100% * $disp-to-dev;
 		position: absolute;
+		top:  $btn-border-width * $btn-size / $columns ;
+		left: - $btn-border-width * $btn-size / $columns;
+		background: $line-color;
+	}
+}
+
+#display {
+	// relative postioning needed for overflow: hidden;
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	.panel {
 		width: 100%;
 		height: 100%;
+		position: absolute;
 		top: 0;
 		left: 0;
 		overflow: hidden;
@@ -75,33 +92,30 @@ body {
 	}
 }
 
-#device>#controls {
-	@include containerWidthOnly($cols, $rows, $container-width-prc, $container-height-prc);
-	position: relative;
-	text-align: right;
-	margin-top: 1vmin;
-	position: absolute;
-  user-select: none;
+#controls {
+  width: 100%;
+	height: 100% * $ctrl-to-dev;
+	margin-top: $btn-border-width * $ctrl-to-dev;
   .button {
-    width: $btn-width;
-    height: $btn-width;
-    position: relative;
-    display: inline-block;
-    margin: $btn-border-width 0 $btn-border-width $btn-border-width;
+    width: 100% / $columns * $btn-size;
+		height: 100%;
+		position: relative;
+		float: right; // button order != source order
+    // margin: $btn-border-width 0 $btn-border-width $btn-border-width;
     &:before {
       content: "";
-      width: $btn-width - $btn-border-width;
-      height: $btn-width - $btn-border-width;
+      width: 100% - $btn-border-width * 2;
+      height: 100% - $btn-border-width * 2;
       position: absolute;
       bottom: 0;
-      left: 0;
+      left: $btn-border-width;
       background: $line-color;
     }
     .icon {
-      width: $btn-width - $btn-border-width;
-      height: $btn-width - $btn-border-width;
+      width: 100% - $btn-border-width * 2;
+      height: 100% - $btn-border-width * 2;
       position: absolute;
-      top: 0;
+      top: $btn-border-width;
       right: 0;
       background: $bg-dark;
       transition: transform 120ms ease-in-out;
