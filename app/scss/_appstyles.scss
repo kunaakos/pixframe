@@ -123,6 +123,7 @@ body {
 			.switcher {
 				width: 100%;
 				height: 100%;
+				transition: transform 500ms ease-in-out;
 				&.switch {
 					transform: translateY(-100%);
 				}

@@ -11,7 +11,6 @@ var colorPicker = (function() {
     _colorSlices();
     $('.slice').click(function(){
       _currentColor = $(this).data('slice');
-      console.log("set color: " + _currentColor);
       if (_colorChangeCb) _colorChangeCb(_currentColor);
     });
   },

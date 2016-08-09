@@ -74,7 +74,12 @@ var app = (function() {
   _changeColor = function(newColor) {
     color = newColor;
     $('#display').removeClass('show-colorpicker');
-    $('.colorpicker-toggle>.icon>svg.color>.paths').css('fill', palette[newColor]);
+    $('.colorpicker-toggle .icon .color .paths').css('fill', palette[newColor]);
+    if (newColor == 0) {
+      $('.colorpicker-toggle .switcher').addClass('switch');
+    } else {
+      $('.colorpicker-toggle .switcher').removeClass('switch');
+    }
   }
 
   return {
