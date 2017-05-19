@@ -78,6 +78,11 @@ module.exports = function(grunt) {
           cwd: '<%= app %>/',
           src: [ 'index.html'],
           dest: '<%= dist %>/'
+        },{
+          expand: true,
+          cwd: '<%= app %>/favicons',
+          src: [ '**'],
+          dest: '<%= dist %>/'
         }]
       },
     },
@@ -126,7 +131,7 @@ module.exports = function(grunt) {
         tasks: ['compile-sass'],
         options: {
           spawn: true,
-        },
+        }
       },
       pug: {
         files: '<%= app %>/templates/**/*.pug',

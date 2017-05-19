@@ -26,20 +26,26 @@ var app = (function() {
       // click painting
       $('.c').click(function(event) {
         pixels.set($(this).data('r'), $(this).data('c'), color);
+        FB.AppEvents.logEvent("paint");
+        FB.AppEvents.logEvent("paint-" + color);                  
       });
       $('.mirroring-toggle').click(function(){
         $('#matrix').toggleClass('mirrored');
+        FB.AppEvents.logEvent("mirroring-toggle");        
       });
       $('.colorpicker-toggle').click(function(){
           $('#display').toggleClass('show-colorpicker');
           $('#display').removeClass('show-info');
+          FB.AppEvents.logEvent("colorpicker-toggle");        
       });
       $('.info-toggle').click(function(){
           $('#display').toggleClass('show-info');
           $('#display').removeClass('show-colorpicker');
+          FB.AppEvents.logEvent("info-toggle");                
       });
       $('.info-ct').click(function(){
           $('#display').removeClass('show-info');
+          FB.AppEvents.logEvent("info-close");                          
       });
   },
 
@@ -73,6 +79,8 @@ var app = (function() {
 
   _changeColor = function(newColor) {
     color = newColor;
+    $("meta[name='theme-color']").attr("content", palette[newColor]);
+    $("meta[name='msapplication-navbutton-color']").attr("content", palette[newColor]);   
     $('#display').removeClass('show-colorpicker');
     $('.colorpicker-toggle .icon .color .paths').css('fill', palette[newColor]);
     if (newColor == 0) {
@@ -80,6 +88,8 @@ var app = (function() {
     } else {
       $('.colorpicker-toggle .switcher').removeClass('switch');
     }
+    FB.AppEvents.logEvent("change-color");                    
+    FB.AppEvents.logEvent("change-color-" + newColor);
   }
 
   return {
